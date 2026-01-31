@@ -6,7 +6,7 @@ export const createbook = async (req, res) => {
     try {
         const { title, caption, image, rating } = req.body;
 
-        if (!title || !caption || !rating) {
+        if (!title || !caption || !rating || !image) {
             return res.status(400).json({ message: "All fields are required" })
         }
 
@@ -35,7 +35,7 @@ export const createbook = async (req, res) => {
         })
     } catch (error) {
         console.error("Book creation error: ", error);
-
+        return res.status(500).json({ message: "Internal Server Error" });
     }
 }
 
