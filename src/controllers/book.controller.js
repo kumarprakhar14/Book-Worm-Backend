@@ -74,7 +74,7 @@ export const getBooks = async (req, res) => {
 export const getRecommendedBooks = async (req, res) => {
     try {
         const books = Book.find({ user: req.user.__id }).sort({ createdAt: -1 })
-        res.json(books)
+        return res.json(books)
     } catch (error) {
         console.error("Error getting recommended books: ", error);
         return res.status(500).json({ message: "Internal Server Error" });
