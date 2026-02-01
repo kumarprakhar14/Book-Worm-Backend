@@ -73,7 +73,7 @@ export const getBooks = async (req, res) => {
 // get recommended books by logged in user 
 export const getRecommendedBooks = async (req, res) => {
     try {
-        const books = Book.find({ user: req.user.__id }).sort({ createdAt: -1 })
+        const books = await Book.find({ user: req.user.__id }).sort({ createdAt: -1 })
         return res.json(books)
     } catch (error) {
         console.error("Error getting recommended books: ", error);
